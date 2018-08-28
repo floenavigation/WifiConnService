@@ -74,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
             requestPermissions(new String[]{Manifest.permission.ACCESS_WIFI_STATE,
                     Manifest.permission.CHANGE_WIFI_STATE, Manifest.permission.ACCESS_NETWORK_STATE,
-                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 100);
-            Toast.makeText(getApplicationContext(),"requestPerm", Toast.LENGTH_LONG).show();
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.INTERNET}, 100);
+            //Toast.makeText(getApplicationContext(),"requestPerm", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(getApplicationContext(), "sdk<23", Toast.LENGTH_LONG).show();
@@ -89,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == 100){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
                     && grantResults[2] == PackageManager.PERMISSION_GRANTED && grantResults[3] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[4] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(getApplicationContext(),"permGranted", Toast.LENGTH_LONG).show();
+                    && grantResults[4] == PackageManager.PERMISSION_GRANTED && grantResults[5] == PackageManager.PERMISSION_GRANTED){
+                //Toast.makeText(getApplicationContext(),"permGranted", Toast.LENGTH_LONG).show();
                 enableButton();
 
             }else{
-                Toast.makeText(getApplicationContext(),"permnotGranted", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"permnotGranted", Toast.LENGTH_LONG).show();
                 runtime_permissions();
             }
         }
@@ -117,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
         }
         registerReceiver(broadcastReceiver, new IntentFilter("wifi_updates"));
     }
-
 
 
     @Override
